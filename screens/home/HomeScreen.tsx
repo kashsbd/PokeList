@@ -1,5 +1,5 @@
 import React from 'react';
-import {VStack} from '@gluestack-ui/themed';
+import {VStack, Spinner} from '@gluestack-ui/themed';
 import {MasonryFlashList} from '@shopify/flash-list';
 
 import PokeListItem from './components/PokeListItem';
@@ -12,7 +12,6 @@ const HomeScreen = () => {
     useInfiniteGetPokemonList();
 
   let allData = [];
-
   if (!isPending && Array.isArray(data?.pages) && data.pages.length > 0) {
     allData = data.pages.reduce(
       (accumulator, currentValue) => [...accumulator, ...currentValue?.results],
@@ -23,6 +22,14 @@ const HomeScreen = () => {
   const renderItem = ({item}: {item: ListItemType}) => {
     return <PokeListItem item={item} />;
   };
+
+  if (isPending) {
+    return (
+      <VStack height="$full" justifyContent="center" alignItems="center">
+        <Spinner />
+      </VStack>
+    );
+  }
 
   return (
     <VStack height="$full">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {GluestackUIProvider} from '@gluestack-ui/themed';
 import {config} from '@gluestack-ui/config';
 import {Provider} from 'react-redux';
@@ -9,13 +9,19 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import HomeScreen from './screens/home/HomeScreen';
 import DetailScreen from './screens/home/DetailScreen';
 import CartListScreen from './screens/cart/CartScreen';
+import HomeHeaderRightButton from './screens/home/components/HomeHeaderRightButton';
 
-import {store} from './store';
+import {store} from './store/store';
 
 const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
 
 const App = () => {
+  const renderHomeHeaderRight = useCallback(
+    () => <HomeHeaderRightButton />,
+    [],
+  );
+
   return (
     <NavigationContainer>
       <QueryClientProvider client={queryClient}>
@@ -25,7 +31,10 @@ const App = () => {
               <Stack.Screen
                 name="Home"
                 component={HomeScreen}
-                options={{title: 'Home'}}
+                options={{
+                  title: 'Home',
+                  headerRight: renderHomeHeaderRight,
+                }}
               />
               <Stack.Screen
                 name="Detail"
