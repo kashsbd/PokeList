@@ -7,11 +7,11 @@ const counterSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart(state, action) {
-      const {id, item} = action.payload;
-      if (state.items[id]) {
-        state.items[id].quantity += 1;
+      const item = action.payload;
+      if (state.items[item.name]) {
+        state.items[item.name].quantity += 1;
       } else {
-        state.items[id] = {...item, quantity: 1};
+        state.items[item.name] = {...item, quantity: 1};
       }
     },
     removeItemFromCart(state, action) {

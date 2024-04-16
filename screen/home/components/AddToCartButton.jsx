@@ -1,11 +1,9 @@
 import React from 'react';
 import {Button, Text} from '@gluestack-ui/themed';
 
-const AddToCartButton = ({onPress}) => {
-  const onButtonPressed = () => {};
-
+const AddToCartButton = ({onPress = () => {}}) => {
   return (
-    <Button onPress={onButtonPressed} variant="outline">
+    <Button onPress={onPress} variant="outline">
       <Text p="$0">Add to cart</Text>
     </Button>
   );
