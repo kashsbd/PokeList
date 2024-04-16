@@ -6,10 +6,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
-import HomeScreen from './screens/home/HomeScreen';
-import DetailScreen from './screens/home/DetailScreen';
-import CartListScreen from './screens/cart/CartScreen';
-import HomeHeaderRightButton from './screens/home/components/HomeHeaderRightButton';
+import HomeScreen from './screen/home/HomeScreen';
+import DetailScreen from './screen/home/DetailScreen';
+import CartListScreen from './screen/cart/CartScreen';
+import HomeHeaderRightButton from './screen/home/components/HomeHeaderRightButton';
 
 import {store} from './store/store';
 

@@ -1,6 +1,6 @@
 import {useInfiniteQuery} from '@tanstack/react-query';
 
-import {fetchPokemonList} from '../services/homeService';
+import {fetchPokemonList} from '../service/homeService';
 
 const useInfiniteGetPokemonList = () => {
   return useInfiniteQuery({

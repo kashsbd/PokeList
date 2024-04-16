@@ -3,9 +3,7 @@ import {VStack, Spinner} from '@gluestack-ui/themed';
 import {MasonryFlashList} from '@shopify/flash-list';
 
 import PokeListItem from './components/PokeListItem';
-import useInfiniteGetPokemonList from '../../hooks/useInfiniteGetPokemonList';
-
-import type {ListItemType} from '../../types/home';
+import useInfiniteGetPokemonList from '../../hook/useInfiniteGetPokemonList';
 
 const HomeScreen = () => {
   const {isPending, data, fetchNextPage, isFetchingNextPage, hasNextPage} =
@@ -19,7 +17,7 @@ const HomeScreen = () => {
     );
   }
 
-  const renderItem = ({item}: {item: ListItemType}) => {
+  const renderItem = ({item}) => {
     return <PokeListItem item={item} />;
   };
 

@@ -10,14 +10,14 @@ import {
 } from '@gluestack-ui/themed';
 import {useNavigation} from '@react-navigation/native';
 
-import ToggleAddToCartButton from './ToggleAddToCartButton';
+import ToggleAddToCartButton from './AddToCartButton';
 
-import type {ListItemType} from '../../../types/home';
-
-const PokeListItem = ({item}: {item: ListItemType}) => {
+const PokeListItem = ({item}) => {
   const {navigate} = useNavigation();
 
-  const onToggleAddToCartBtnPressed = (hasAdded: boolean) => {};
+  const onToggleAddToCartBtnPressed = hasAdded => {
+    console.log(hasAdded);
+  };
 
   return (
     <Pressable onPress={() => navigate('Detail')}>
