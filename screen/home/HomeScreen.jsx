@@ -37,7 +37,7 @@ const HomeScreen = () => {
 
   if (isPending) {
     return (
-      <VStack height="$full" justifyContent="center" alignItems="center">
+      <VStack flex={1} justifyContent="center" alignItems="center">
         <Spinner />
       </VStack>
     );

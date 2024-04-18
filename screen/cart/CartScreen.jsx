@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View} from '@gluestack-ui/themed';
 
 const CartScreen = () => {
   return <View />;

@@ -26,7 +26,7 @@ const DetailScreen = () => {
   const totalWeight = data?.weight * quantity;
 
   const onPlusBtnPressed = () => {
-    dispatch(addItemToCart(params));
+    dispatch(addItemToCart({...params, weight: data?.weight}));
   };
 
   const onMinusBtnPressed = () => {
@@ -34,7 +34,7 @@ const DetailScreen = () => {
   };
 
   if (isPending) {
-    <VStack height="$full" justifyContent="center" alignItems="center">
+    <VStack flex={1} justifyContent="center" alignItems="center">
       <Spinner />
     </VStack>;
   }
