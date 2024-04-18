@@ -29,6 +29,8 @@ const HomeScreen = () => {
     );
   };
 
+  const keyExtractor = item => item.name;
+
   const onEndReached = () => {
     if (hasNextPage) {
       fetchNextPage();
@@ -53,6 +55,7 @@ const HomeScreen = () => {
         onEndThreshold={0}
         ListFooterComponent={renderListFooter}
         onEndReached={onEndReached}
+        keyExtractor={keyExtractor}
       />
     </VStack>
   );
