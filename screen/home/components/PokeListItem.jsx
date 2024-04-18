@@ -5,22 +5,12 @@ import {
   Text,
   HStack,
   Card,
-  View,
   Pressable,
 } from '@gluestack-ui/themed';
 import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-
-import AddToCartButton from './AddToCartButton';
-import {addItemToCart} from '../../../store/slice/cartSlice';
 
 const PokeListItem = ({item}) => {
   const {navigate} = useNavigation();
-  const dispatch = useDispatch();
-
-  const onAddToCartBtnPressed = () => {
-    dispatch(addItemToCart(item));
-  };
 
   const navigateToDetail = () => {
     navigate('Detail', {name: item.name});
@@ -40,9 +30,6 @@ const PokeListItem = ({item}) => {
             />
           </HStack>
           <Text textAlign="center">{item.name}</Text>
-          <View mt="$3">
-            <AddToCartButton onPress={onAddToCartBtnPressed} />
-          </View>
         </VStack>
       </Card>
     </Pressable>
