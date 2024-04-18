@@ -15,12 +15,12 @@ const counterSlice = createSlice({
       }
     },
     removeItemFromCart(state, action) {
-      const id = action.payload;
-      if (state.items[id]) {
-        if (state.items[id].quantity > 1) {
-          state.items[id].quantity -= 1;
+      const name = action.payload;
+      if (state.items[name]) {
+        if (state.items[name].quantity > 1) {
+          state.items[name].quantity -= 1;
         } else {
-          delete state.items[id];
+          delete state.items[name];
         }
       }
     },
