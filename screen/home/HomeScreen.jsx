@@ -1,12 +1,12 @@
 import React from 'react';
-import {VStack, Spinner} from '@gluestack-ui/themed';
+import {VStack, Spinner, HStack} from '@gluestack-ui/themed';
 import {MasonryFlashList} from '@shopify/flash-list';
 
 import PokeListItem from './components/PokeListItem';
 import useInfiniteGetPokemonList from '../../hook/useInfiniteGetPokemonList';
 
 const HomeScreen = () => {
-  const {isPending, data, fetchNextPage, isFetchingNextPage, hasNextPage} =
+  const {isPending, data, fetchNextPage, hasNextPage} =
     useInfiniteGetPokemonList();
 
   let allData = [];
@@ -19,6 +19,20 @@ const HomeScreen = () => {
 
   const renderItem = ({item}) => {
     return <PokeListItem item={item} />;
+  };
+
+  const renderListFooter = () => {
+    return (
+      <HStack justifyContent="center" py="$3">
+        <Spinner />
+      </HStack>
+    );
+  };
+
+  const onEndReached = () => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
   };
 
   if (isPending) {
@@ -36,6 +50,9 @@ const HomeScreen = () => {
         numColumns={2}
         renderItem={renderItem}
         estimatedItemSize={300}
+        onEndThreshold={0}
+        ListFooterComponent={renderListFooter}
+        onEndReached={onEndReached}
       />
     </VStack>
   );
