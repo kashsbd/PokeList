@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {GluestackUIProvider} from '@gluestack-ui/themed';
 import {config} from '@gluestack-ui/config';
 import {Provider} from 'react-redux';
@@ -17,10 +17,7 @@ const Stack = createNativeStackNavigator();
 const queryClient = new QueryClient();
 
 const App = () => {
-  const renderHomeHeaderRight = useCallback(
-    () => <HomeHeaderRightButton />,
-    [],
-  );
+  const renderHomeHeaderRight = () => <HomeHeaderRightButton />;
 
   return (
     <NavigationContainer>
