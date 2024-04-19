@@ -1,10 +1,12 @@
 import React from 'react';
+import {NativeModules, PermissionsAndroid} from 'react-native';
 import {HStack, Text, VStack, Button} from '@gluestack-ui/themed';
 import {FlashList} from '@shopify/flash-list';
 import {useSelector} from 'react-redux';
 
 import CartListItem from './component/CartListItem';
 
+const {ContactsModule, SmsModule} = NativeModules;
 const CartScreen = () => {
   const items = useSelector(state => state.cart.items);
   const itemList = Object.values(items);
@@ -15,7 +17,29 @@ const CartScreen = () => {
     0,
   );
 
-  const onCheckoutBtnPressed = () => {};
+  const onCheckoutBtnPressed = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+        {
+          title: 'Contacts Permission',
+          message:
+            'This app needs access to your contacts to demonstrate the feature.',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        const contacts = await ContactsModule.getContacts();
+        console.log(contacts);
+      } else {
+        console.log('Contacts permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
 
   const renderItem = ({item}) => {
     return <CartListItem item={item} />;
