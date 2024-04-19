@@ -52,7 +52,7 @@ const HomeScreen = () => {
         numColumns={2}
         renderItem={renderItem}
         estimatedItemSize={300}
-        onEndThreshold={0}
+        onEndThreshold={20}
         ListFooterComponent={renderListFooter}
         onEndReached={onEndReached}
         keyExtractor={keyExtractor}

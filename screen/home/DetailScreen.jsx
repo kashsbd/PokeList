@@ -60,7 +60,7 @@ const DetailScreen = () => {
       <VStack bg="$white" height="10%" px="$5">
         {quantity === 0 ? (
           <HStack justifyContent="center" alignItems="center" height="$full">
-            <Button onPress={onPlusBtnPressed} variant="outline">
+            <Button onPress={onPlusBtnPressed} variant="outline" width="$full">
               <Text p="$0">Add to cart</Text>
             </Button>
           </HStack>
