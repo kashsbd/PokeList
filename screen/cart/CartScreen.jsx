@@ -33,11 +33,12 @@ const CartScreen = () => {
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         const contacts = await ContactsModule.getContacts();
         console.log(contacts);
+        // await SmsModule.sendSMS("6412339586", "some message");
       } else {
         console.log('Contacts permission denied');
       }
     } catch (err) {
-      console.warn(err);
+      console.log(err);
     }
   };
 
